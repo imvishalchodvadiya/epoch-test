@@ -1,0 +1,29 @@
+<form (ngSubmit)="onSubmit()" #fileForm="ngForm">
+  <mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile>
+      <input
+        type="file"
+        (change)="onFileChange($event, 'file1')"
+        required
+        accept=".txt,.pdf"
+      />
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <input
+        type="file"
+        (change)="onFileChange($event, 'file2')"
+        required
+        accept=".txt,.pdf"
+      />
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-flat-button color="primary" type="submit" [disabled]="!fileForm.valid">Compare Files</button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
+<mat-grid-list cols="1" rowHeight="100px">
+    <mat-grid-tile>
+        <div *ngIf="error" class="error"><mat-error><h1>{{ error }}</h1></mat-error></div>
+        <div *ngIf="comparisonResult" class="success"><h1>{{ comparisonResult }}</h1></div>
+    </mat-grid-tile>
+</mat-grid-list>
