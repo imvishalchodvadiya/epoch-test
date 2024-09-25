@@ -9,6 +9,6 @@ export class FileCompareService {
   constructor(private http: HttpClient) {}
 
   compareFiles(formData: FormData): Observable<any> {
-    return this.http.post('http://localhost:3000/compare', formData);
+    return this.http.post('http://localhost:3051/compare', formData);
   }
 }
